@@ -1,0 +1,26 @@
+{
+  "name": "imagine-node",
+  "version": "0.0.1",
+  "description": "node module to work with imaginary numbers",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cereceres/imagine-node.git"
+  },
+  "keywords": [
+    "imaginary",
+    "numbers",
+    "node",
+    "real",
+    "complex"
+  ],
+  "author": "Jesus Edel Cereceres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cereceres/imagine-node/issues"
+  },
+  "homepage": "https://github.com/Cereceres/imagine-node#readme"
+}
