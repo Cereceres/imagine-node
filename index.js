@@ -34,6 +34,7 @@ const Complex = module.exports = class {
     multiply(other = {}) {
         const { real = 0, imaginary = 0 } = other;
         const { real:selfReal, imaginary: selfImaginary } = this;
+            selfImaginary * real + imaginary * selfReal);
         return new Complex(
             selfReal * real - selfImaginary * imaginary,
             selfImaginary * real + imaginary * selfReal
@@ -52,15 +53,8 @@ const Complex = module.exports = class {
         );
     }
 
-    pow(n) {
-        const { real = 0, imaginary = 0 } = this;
-        const { norm, theta } = Complex.getPolar(real, imaginary);
-        if (!norm) return this;
-
-        return new Complex(
-            norm * Math.cos(theta * n),
-            norm * Math.sin(theta * n)
-        );
+    pow({ real = 1, imaginary = 0 }) {
+        return this.ln().multiply({ real, imaginary }).exp();
     }
 
     sqrt(n = 2) {
@@ -78,9 +72,11 @@ const Complex = module.exports = class {
 
     exp() {
         const { real = 0, imaginary = 0 } = this;
+            Math.exp(real) * Math.sin(imaginary));
+
         return new Complex(
             Math.exp(real) * Math.cos(imaginary),
-            Math.exp(real) * Math.cos(imaginary)
+            Math.exp(real) * Math.sin(imaginary)
         );
     }
 

@@ -1,7 +1,7 @@
 {
   "name": "imagine-node",
-  "version": "0.0.2",
-  "description": "node module to work with imaginary numbers",
+  "version": "0.1.0",
+  "description": "node module to work with complex numbers",
   "main": "index.js",
   "scripts": {
     "test": "mocha test"

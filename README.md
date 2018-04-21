@@ -18,16 +18,21 @@ const chainingComplex = complex
     .multiply({ real: 2, imaginary:-3 })
     .div({ real: 2, imaginary:3 });
 assert(chainingComplex.real === 2);
-assert(chainingComplex.imaginary === -3);
+assert(chainingComplex.imaginary === -3);ç
+
+complex
+    .ln()
+    .multiply({ real:1, imaginary:1 })
+    .exp()
 
 ```
 # API imagineClass(real, imaginary)
 
 # Properties
 
-## real
+## real Number
 
-## imaginary
+## imaginary Number
 
 # Methods
 
@@ -36,6 +41,6 @@ assert(chainingComplex.imaginary === -3);
 ## div({real, imaginary}) -> imagineInstance
 ## multiply({real, imaginary}) -> imagineInstance
 ## ln() -> imagineInstance
-## pow(integer) -> imagineInstance
-## sqrt(integer) -> imagineInstance
+## pow({real, imaginary}) -> imagineInstance
+## sqrt(integer) ->ArrayOfImagineInstance
 
