@@ -3,13 +3,20 @@ const Pi2 = PI;
 
 
 const Complex = module.exports = class {
-    constructor(real = 0, imaginary = 0) {
-        this.real = real;
-        this.imaginary = imaginary;
+    constructor(real, imaginary) {
+        this.real = imaginary === undefined && real.real ||
+            typeof real === 'number' && real ||
+            0;
+        this.imaginary = imaginary === undefined && real.imaginary ||
+            typeof imaginary === 'number' && imaginary ||
+            0;
     }
 
-    sum(other = {}) {
-        const { real = 0, imaginary = 0 } = other;
+    sum(other = 0, defaultImaginary = 0) {
+        const {
+            real = defaultImaginary !== undefined && other || 0,
+            imaginary = defaultImaginary || 0
+        } = other;
 
         return new Complex(this.real + real, this.imaginary + imaginary);
     }
@@ -25,24 +32,33 @@ const Complex = module.exports = class {
         return { theta, norm };
     }
 
-    sub(other = {}) {
-        const { real = 0, imaginary = 0 } = other;
+    sub(other = 0, defaultImaginary = 0) {
+        const {
+            real = defaultImaginary !== undefined && other || 0,
+            imaginary = defaultImaginary || 0
+        } = other;
 
         return new Complex(this.real - real, this.imaginary - imaginary);
     }
 
-    multiply(other = {}) {
-        const { real = 0, imaginary = 0 } = other;
+    multiply(other = 0, defaultImaginary) {
+        const {
+            real = defaultImaginary !== undefined && other || 0,
+            imaginary = defaultImaginary || 0
+        } = other;
         const { real:selfReal, imaginary: selfImaginary } = this;
-            selfImaginary * real + imaginary * selfReal);
         return new Complex(
             selfReal * real - selfImaginary * imaginary,
             selfImaginary * real + imaginary * selfReal
         );
     }
 
-    div(other = {}) {
-        const { real = 0, imaginary = 0 } = other;
+    div(other = 0, defaultImaginary = 0) {
+        const {
+            real = defaultImaginary !== undefined && other || 0,
+            imaginary = defaultImaginary || 0
+        } = other;
+
         const norm = real * real + imaginary * imaginary;
 
         if (!norm) throw new Error(`norm = ${ norm} is not valid`);
@@ -53,7 +69,11 @@ const Complex = module.exports = class {
         );
     }
 
-    pow({ real = 1, imaginary = 0 }) {
+    pow(other = 0, defaultImaginary = 0) {
+        const {
+            real = defaultImaginary !== undefined && other || 0,
+            imaginary = defaultImaginary || 0
+        } = other;
         return this.ln().multiply({ real, imaginary }).exp();
     }
 
@@ -72,12 +92,30 @@ const Complex = module.exports = class {
 
     exp() {
         const { real = 0, imaginary = 0 } = this;
-            Math.exp(real) * Math.sin(imaginary));
-
         return new Complex(
             Math.exp(real) * Math.cos(imaginary),
             Math.exp(real) * Math.sin(imaginary)
         );
+    }
+
+    cos() {
+        return this
+            .multiply({ imaginary:1 })
+            .exp()
+            .sum(
+                this.multiply({ imaginary:-1 }).exp()
+            )
+            .div(2);
+    }
+
+    sin() {
+        return this
+            .multiply({ imaginary:1 })
+            .exp()
+            .sub(
+                this.multiply({ imaginary:-1 }).exp()
+            )
+            .div(0, 2);
     }
 
     ln() {
