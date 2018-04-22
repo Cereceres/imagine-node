@@ -41,6 +41,8 @@ complex
 ## div({real, imaginary}) -> imagineInstance
 ## multiply({real, imaginary}) -> imagineInstance
 ## ln() -> imagineInstance
+## cos() -> imagineInstance
+## sin() -> imagineInstance
 ## pow({real, imaginary}) -> imagineInstance
 ## sqrt(integer) ->ArrayOfImagineInstance
 
