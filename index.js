@@ -16,7 +16,7 @@ const Complex = module.exports = class {
         this.imaginary = typeof imaginary === 'number' ? imaginary : this.imaginary;
     }
 
-    sum(other = 0, defaultImaginary = 0) {
+    add(other = 0, defaultImaginary = 0) {
         const {
             real = typeof other === 'number' ? other : 0,
             imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : 0
@@ -104,7 +104,7 @@ const Complex = module.exports = class {
         return this
             .multiply({ imaginary:1 })
             .exp()
-            .sum(
+            .add(
                 this.multiply({ imaginary:-1 }).exp()
             )
             .div({ real:2 });

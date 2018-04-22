@@ -8,7 +8,7 @@ describe('test to class', () => {
         const complex = new Complex({ real:1, imaginary:1 });
 
         const classComplex = complex
-            .sum({ real: 2, imaginary:3 })
+            .add({ real: 2, imaginary:3 })
             .sub({ real: 1, imaginary:1 })
             .multiply({ real: 2, imaginary:-3 })
             .div({ real: 2, imaginary:3 });

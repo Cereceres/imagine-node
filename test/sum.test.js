@@ -3,12 +3,12 @@ const assert = require('assert');
 const Complex = require('../index');
 
 
-describe('test to sum method', () => {
-    it('should the calculate the sum of a complex number', () => {
+describe('test to add method', () => {
+    it('should the calculate the add of a complex number', () => {
         const complex = new Complex(1, 1);
 
-        const sumComplex = complex.sum({ real: 2, imaginary:3 });
-        assert(sumComplex.real === 3);
-        assert(sumComplex.imaginary === 4);
+        const addComplex = complex.add({ real: 2, imaginary:3 });
+        assert(addComplex.real === 3);
+        assert(addComplex.imaginary === 4);
     });
 });
