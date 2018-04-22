@@ -15,4 +15,14 @@ describe('test to class', () => {
         assert(classComplex.real === 2);
         assert(classComplex.imaginary === -3);
     });
+
+
+    it('should the calculate the class of a complex number', () => {
+        const complex = new Complex();
+
+        const classComplex = complex
+            .multiply({ real: 2, imaginary:-3 });
+        assert(classComplex.real === 2);
+        assert(classComplex.imaginary === -3);
+    });
 });
