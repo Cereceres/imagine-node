@@ -9,45 +9,53 @@ const Complex = module.exports = class {
         if (typeof real === 'number') this.real = real;
 
         if (typeof real === 'object') {
-            this.real = real.real || this.real;
-            this.imaginary = real.imaginary || this.imaginary;
+            this.real = real.r || real.real || this.real;
+            this.imaginary = real.i || real.imaginary || this.imaginary;
         }
 
         this.imaginary = typeof imaginary === 'number' ? imaginary : this.imaginary;
+
+        this.r = this.real;
+        this.i = this.imaginary;
     }
 
-    add(other = 0, defaultImaginary = 0) {
+    static i(imaginary) {
+        return new Complex(0, imaginary);
+    }
+
+    add(other = 0, defaultImaginary) {
         const {
-            real = typeof other === 'number' ? other : 0,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : 0
+            i = 0,
+            r = 0,
+            real = typeof other === 'number' ? other : r,
+            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
         } = other;
         return new Complex(this.real + real, this.imaginary + imaginary);
     }
 
     static getPolar(real, imaginary) {
-        const norm = real * real + imaginary * imaginary;
-        let theta;
-        if (real) theta = Math.atan(imaginary / real);
-        if (!real && imaginary > 0) theta = PI / 2;
-        if (!real && imaginary < 0) theta = -PI / 2;
-        if (real < 0) theta = theta + PI;
+        const norm = Math.hypot(real, imaginary);
+        const theta = Math.atan2(imaginary, real);
 
         return { theta, norm };
     }
 
-    sub(other = 0, defaultImaginary = 0) {
+    sub(other = 0, defaultImaginary) {
         const {
-            real = typeof other === 'number' ? other : 0,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : 0
+            i = 0,
+            r = 0,
+            real = typeof other === 'number' ? other : r,
+            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
         } = other;
-
         return new Complex(this.real - real, this.imaginary - imaginary);
     }
 
     multiply(other = 0, defaultImaginary) {
         const {
-            real = typeof other === 'number' ? other : 0,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : 0
+            i = 0,
+            r = 0,
+            real = typeof other === 'number' ? other : r,
+            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
         } = other;
         const { real:selfReal, imaginary: selfImaginary } = this;
 
@@ -59,22 +67,26 @@ const Complex = module.exports = class {
 
     div(other = 0, defaultImaginary) {
         const {
-            real = typeof other === 'number' ? other : 0,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : 0
+            i = 0,
+            r = 0,
+            real = typeof other === 'number' ? other : r,
+            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
         } = other;
         const norm = real * real + imaginary * imaginary;
 
-        if (!norm) throw new Error(`norm = ${ norm} is not valid`);
+        if (!norm) throw new Error(`norm = ${ norm } is not valid`);
         return new Complex(
             (this.real * real + this.imaginary * imaginary) / norm,
             (this.imaginary * real - imaginary * this.real) / norm
         );
     }
 
-    pow(other = 0, defaultImaginary = 0) {
+    pow(other = 0, defaultImaginary) {
         const {
-            real = typeof other === 'number' ? other : 0,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : 0
+            i = 0,
+            r = 0,
+            real = typeof other === 'number' ? other : r,
+            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
         } = other;
         return this.ln().multiply({ real, imaginary }).exp();
     }
@@ -130,6 +142,6 @@ const Complex = module.exports = class {
     }
 
     conjugate() {
-        return new Complex(this.real, -1 * this.imaginary);
+        return new Complex(this.real, -this.imaginary);
     }
 };

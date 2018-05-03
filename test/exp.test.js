@@ -27,4 +27,12 @@ describe('test to exp method', () => {
         assert(expComplex.real === -1);
         assert(expComplex.imaginary < 0.00001);
     });
+
+    it('should the calculate the exp of a real number', () => {
+        const complex = new Complex(5);
+
+        const expComplex = complex.exp();
+        assert(expComplex.real === Math.exp(5));
+        assert(expComplex.imaginary === 0);
+    });
 });
