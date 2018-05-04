@@ -32,6 +32,14 @@ describe('test to pow method', () => {
         const complex = new Complex(0, 1);
 
         const powComplex = complex.pow({ real:3 });
+        console.log('powComplex ', powComplex);
+        assert(powComplex.real < 0.001);
+        assert(powComplex.imaginary === -1);
+    });
+
+    it('should the the second pow of real', () => {
+        const powComplex = Complex.pow({ r:0, i:1 }, { real:3 });
+        console.log('powComplex ', powComplex);
         assert(powComplex.real < 0.001);
         assert(powComplex.imaginary === -1);
     });

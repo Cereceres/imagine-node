@@ -28,6 +28,13 @@ describe('test to exp method', () => {
         assert(expComplex.imaginary < 0.00001);
     });
 
+    it('should the calculate the exp of a complex number  Pi i ', () => {
+        const expComplex = Complex.exp({ imaginary:Math.PI });
+        console.log('expComplex ', expComplex);
+        assert(expComplex.real === -1);
+        assert(expComplex.imaginary < 0.00001);
+    });
+
     it('should the calculate the exp of a real number', () => {
         const complex = new Complex(5);
 

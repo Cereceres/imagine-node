@@ -11,4 +11,10 @@ describe('test to cos method', () => {
         assert(cosComplex.real === -1);
         assert(cosComplex.imaginary < 0.0001);
     });
+
+    it('should the calculate the cos of a complex number', () => {
+        const cosComplex = Complex.cos({ r:Math.PI, i:0 });
+        assert(cosComplex.real === -1);
+        assert(cosComplex.imaginary < 0.0001);
+    });
 });

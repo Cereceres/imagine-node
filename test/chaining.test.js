@@ -8,11 +8,9 @@ describe('test to chaining method', () => {
         const complex = new Complex(1, 1);
 
         const chainingComplex = complex
-            .add({ real: 2, imaginary:3 })
-            .sub({ real: 1, imaginary:1 })
             .multiply({ real: 2, imaginary:-3 })
-            .div({ real: 2, imaginary:3 });
-        assert(chainingComplex.real === 2);
-        assert(chainingComplex.imaginary === -3);
+            .div({ real: 1, imaginary:1 });
+        assert(chainingComplex.real - 2 < 0.0001);
+        assert(chainingComplex.imaginary + 3 < 0.0001);
     });
 });

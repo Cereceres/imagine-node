@@ -34,7 +34,12 @@ complex
 
 ## imaginary Number
 
-# Methods
+# ClassMethods
+
+## i(number) -> ImagineInstance
+
+return a imaginary number
+# InstanceMethods
 
 ## add({real, imaginary}) -> imagineInstance
 ## sub({real, imaginary}) -> imagineInstance

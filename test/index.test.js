@@ -12,8 +12,9 @@ describe('test to class', () => {
             .sub({ real: 1, imaginary:1 })
             .multiply({ real: 2, imaginary:-3 })
             .div({ real: 2, imaginary:3 });
-        assert(classComplex.real === 2);
-        assert(classComplex.imaginary === -3);
+        console.log('classComplex ', classComplex);
+        assert(classComplex.real - 2 < 0.0001);
+        assert(classComplex.imaginary + 3 < 0.00001);
     });
 
 

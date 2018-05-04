@@ -19,4 +19,10 @@ describe('test to sub method', () => {
         assert(subComplex.real === 4);
         assert(subComplex.imaginary === 3);
     });
+
+    it('should the calculate the sub of a complex number', () => {
+        const subComplex = Complex.sub({ i:1, r:1 }, { i: -2, r:-3 });
+        assert(subComplex.real === 4);
+        assert(subComplex.imaginary === 3);
+    });
 });

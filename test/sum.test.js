@@ -11,4 +11,10 @@ describe('test to add method', () => {
         assert(addComplex.real === 3);
         assert(addComplex.imaginary === 4);
     });
+
+    it('should the calculate the add of a complex number', () => {
+        const addComplex = Complex.add({ i:1, r:1 }, { real: 2, imaginary:3 });
+        assert(addComplex.real === 3);
+        assert(addComplex.imaginary === 4);
+    });
 });
