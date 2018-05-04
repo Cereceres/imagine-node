@@ -36,7 +36,20 @@ complex
 
 # ClassMethods
 
-## i(number) -> ImagineInstance
+## add({real, imaginary}, {real, imaginary}) -> imagineInstance
+## sub({real, imaginary}, {real, imaginary}) -> imagineInstance
+## div({real, imaginary}, {real, imaginary}) -> imagineInstance
+## multiply({real, imaginary}, {real, imaginary}) -> imagineInstance
+## ln({real, imaginary}) -> imagineInstance
+## cos({real, imaginary}) -> imagineInstance
+## sin({real, imaginary}) -> imagineInstance
+## pow({real, imaginary}, {real, imaginary}) -> imagineInstance
+## sqrt({real, imaginary},integer) ->ArrayOfImagineInstance
+## inverse({real, imaginary}) ->imagineInstance
+## im(number) -> imagineInstance
+return a complex number with only imaginary part equal to number given
+## re(number) -> imagineInstance
+return a complex number with only real part equal to number given
 
 return a imaginary number
 # InstanceMethods
@@ -50,4 +63,11 @@ return a imaginary number
 ## sin() -> imagineInstance
 ## pow({real, imaginary}) -> imagineInstance
 ## sqrt(integer) ->ArrayOfImagineInstance
+## inverse() ->imagineInstance
+## im() -> imagineInstance
+return a complex number with only imaginary part
+## re() -> imagineInstance
+return a complex number with only real part
+
+
 

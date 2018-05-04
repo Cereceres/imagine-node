@@ -25,6 +25,14 @@ const Complex = module.exports = class {
         return new Complex(0, this.imaginary);
     }
 
+    static re(real) {
+        return new Complex(real, 0);
+    }
+
+    re() {
+        return new Complex(this.real, 0);
+    }
+
     add(other = 0, defaultImaginary) {
         const {
             i = 0,
