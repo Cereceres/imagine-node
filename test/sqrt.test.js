@@ -16,11 +16,20 @@ describe('test to sqrt method', () => {
         const complex = new Complex(-1, 0);
         const sqrtComplex = complex.sqrt();
         assert(sqrtComplex.length === 2);
-        console.log('sqrtComplex[0] ', sqrtComplex);
         assert(sqrtComplex[0].real < 0.0001);
         assert(sqrtComplex[0].i === 1);
         assert(sqrtComplex[1].real < 0.0001);
         assert(sqrtComplex[1].i === -1);
+    });
+
+    it('should the calculate the sqrt of a complex number', () => {
+        const complex = new Complex(1, 0);
+        const sqrtComplex = complex.sqrt();
+        assert(sqrtComplex.length === 2);
+        assert(sqrtComplex[0].real === 1);
+        assert(sqrtComplex[0].i < 0.0001);
+        assert(sqrtComplex[1].real === -1);
+        assert(sqrtComplex[1].i < 0.0001);
     });
 
     it('should the calculate the sqrt of a complex number', () => {

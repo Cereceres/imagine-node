@@ -34,14 +34,14 @@ const Complex = module.exports = class {
     }
 
     add(other = 0, defaultImaginary) {
-        console.log('other ', other);
+        console.log('other in add', other);
         const {
             i = 0,
             r = 0,
             real = !isNaN(other) ? other : r,
             imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
-        console.log('real and imaginary', real, imaginary);
+        console.log('real and imaginary in add', real, imaginary);
         return new Complex(this.real + real, this.imaginary + imaginary);
     }
 
@@ -76,6 +76,7 @@ const Complex = module.exports = class {
             real = !isNaN(other) ? other : r,
             imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
+        console.log('r and i in sib', real, imaginary, this);
         return new Complex(this.real - real, this.imaginary - imaginary);
     }
 
@@ -215,7 +216,7 @@ const Complex = module.exports = class {
     }
 
     sqrt(n = 2) {
-        console.log('this ', this);
+        console.log('this in sqrt', this);
         const { r = 0, i = 0, real = r, imaginary = i } = this;
         let { norm, theta } = Complex.getPolar(real, imaginary);
         theta = theta / n;
@@ -303,8 +304,9 @@ const Complex = module.exports = class {
 
     static acos(complex, other) {
         const _this = new Complex(complex, other);
+        console.log('_this ', _this);
         return _this
-            .add(this.pow(2).sub(1).sqrt())
+            .add(_this.pow(2).sub(1).sqrt()[0])
             .ln()
             .multiply(Complex.im(-1));
     }
