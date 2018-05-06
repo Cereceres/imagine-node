@@ -25,4 +25,10 @@ describe('test to ln method', () => {
         assert(lnComplex.real === Math.log(Math.hypot(1000000, 1)));
         assert(lnComplex.imaginary === Math.atan2(1, 1000000));
     });
+
+    it('should the calculate the ln of a complex number', () => {
+        const lnComplex = Complex.ln({ r:1000000, i:1 }).exp()
+        assert(lnComplex.real - 1000000 < 0.0001);
+        assert(lnComplex.imaginary - 1 < 0.00001);
+    });
 });

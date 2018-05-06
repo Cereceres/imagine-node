@@ -1,23 +1,23 @@
 const { PI } = Math;
-const Pi2 = PI;
+const Pi2 = 2 * PI;
 
 
 const Complex = module.exports = class {
     constructor(real, imaginary) {
         this.real = 1;
         this.imaginary = 0;
-        if (typeof real === 'number') this.real = real;
-        if (real && typeof real.r === 'number') this.real = real.r;
-        if (real && typeof real.real === 'number') this.real = real.real;
-        if (real && typeof real.i === 'number') this.imaginary = real.i;
-        if (real && typeof real.imaginary === 'number') this.imaginary = real.imaginary;
-        if (typeof imaginary === 'number') this.imaginary = imaginary;
+        if (!isNaN(real)) this.real = real;
+        if (real && !isNaN(real.r)) this.real = real.r;
+        if (real && !isNaN(real.real)) this.real = real.real;
+        if (real && !isNaN(real.i)) this.imaginary = real.i;
+        if (real && !isNaN(real.imaginary)) this.imaginary = real.imaginary;
+        if (!isNaN(imaginary)) this.imaginary = imaginary;
 
         this.r = this.real;
         this.i = this.imaginary;
     }
 
-    static im(imaginary) {
+    static im(imaginary = 1) {
         return new Complex(0, imaginary);
     }
 
@@ -25,7 +25,7 @@ const Complex = module.exports = class {
         return new Complex(0, this.imaginary);
     }
 
-    static re(real) {
+    static re(real = 0) {
         return new Complex(real, 0);
     }
 
@@ -34,12 +34,14 @@ const Complex = module.exports = class {
     }
 
     add(other = 0, defaultImaginary) {
+        console.log('other ', other);
         const {
             i = 0,
             r = 0,
-            real = typeof other === 'number' ? other : r,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
+            real = !isNaN(other) ? other : r,
+            imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
+        console.log('real and imaginary', real, imaginary);
         return new Complex(this.real + real, this.imaginary + imaginary);
     }
 
@@ -48,8 +50,8 @@ const Complex = module.exports = class {
         const {
             i = 0,
             r = 0,
-            real = typeof other === 'number' ? other : r,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
+            real = !isNaN(other) ? other : r,
+            imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
         return new Complex(_this.real + real, _this.imaginary + imaginary);
     }
@@ -67,11 +69,12 @@ const Complex = module.exports = class {
     }
 
     sub(other = 0, defaultImaginary) {
+        console.log('other sub ', other);
         const {
             i = 0,
             r = 0,
-            real = typeof other === 'number' ? other : r,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
+            real = !isNaN(other) ? other : r,
+            imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
         return new Complex(this.real - real, this.imaginary - imaginary);
     }
@@ -81,8 +84,8 @@ const Complex = module.exports = class {
         const {
             i = 0,
             r = 0,
-            real = typeof other === 'number' ? other : r,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
+            real = !isNaN(other) ? other : r,
+            imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
         return new Complex(_this.real - real, _this.imaginary - imaginary);
     }
@@ -91,8 +94,8 @@ const Complex = module.exports = class {
         const {
             i = 0,
             r = 0,
-            real = typeof other === 'number' ? other : r,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
+            real = !isNaN(other) ? other : r,
+            imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
         const { real:selfReal, imaginary: selfImaginary } = this;
 
@@ -106,8 +109,8 @@ const Complex = module.exports = class {
         const {
             i = 0,
             r = 0,
-            real = typeof other === 'number' ? other : r,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
+            real = !isNaN(other) ? other : r,
+            imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
         const {
             r:selfR = 0,
@@ -126,8 +129,8 @@ const Complex = module.exports = class {
         const {
             i = 0,
             r = 0,
-            real = typeof other === 'number' ? other : r,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
+            real = !isNaN(other) ? other : r,
+            imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
         const norm = Math.hypot(real, imaginary);
         const norm2 = norm * norm;
@@ -143,8 +146,8 @@ const Complex = module.exports = class {
         const {
             i = 0,
             r = 0,
-            real = typeof other === 'number' ? other : r,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
+            real = !isNaN(other) ? other : r,
+            imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
         const _this = new Complex(complex);
         const norm = Math.hypot(real, imaginary);
@@ -195,8 +198,8 @@ const Complex = module.exports = class {
         const {
             i = 0,
             r = 0,
-            real = typeof other === 'number' ? other : r,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
+            real = !isNaN(other) ? other : r,
+            imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
         return this.ln().multiply({ real, imaginary }).exp();
     }
@@ -205,23 +208,30 @@ const Complex = module.exports = class {
         const {
             i = 0,
             r = 0,
-            real = typeof other === 'number' ? other : r,
-            imaginary = typeof defaultImaginary === 'number' ? defaultImaginary : i
+            real = !isNaN(other) ? other : r,
+            imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
         return new Complex(complex).ln().multiply({ real, imaginary }).exp();
     }
 
     sqrt(n = 2) {
+        console.log('this ', this);
         const { r = 0, i = 0, real = r, imaginary = i } = this;
         let { norm, theta } = Complex.getPolar(real, imaginary);
         theta = theta / n;
         if (!norm) return this;
 
-        const roots = new Array(n);
-        return roots.map((item, index) => new Complex(
+        const roots = new Array(n).fill(0);
+        console.log('roots ', roots.map((item, index) => new Complex(
+            norm * Math.cos(theta + Pi2 * index / n),
+            norm * Math.sin(theta + Pi2 * index / n)
+        )));
+        const res = roots.map((item, index) => new Complex(
             norm * Math.cos(theta + Pi2 * index / n),
             norm * Math.sin(theta + Pi2 * index / n)
         ));
+        console.log('res ', res);
+        return res;
     }
 
     static sqrt(complex, n = 2) {
@@ -282,6 +292,21 @@ const Complex = module.exports = class {
                 _this.multiply({ imaginary:-1 }).exp()
             )
             .div({ real:2 });
+    }
+
+    acos() {
+        return this
+            .add(this.pow(2).sub(1).sqrt()[0])
+            .ln()
+            .multiply(Complex.im(-1));
+    }
+
+    static acos(complex, other) {
+        const _this = new Complex(complex, other);
+        return _this
+            .add(this.pow(2).sub(1).sqrt())
+            .ln()
+            .multiply(Complex.im(-1));
     }
 
     sin() {
