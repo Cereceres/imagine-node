@@ -34,14 +34,12 @@ const Complex = module.exports = class {
     }
 
     add(other = 0, defaultImaginary) {
-        console.log('other in add', other);
         const {
             i = 0,
             r = 0,
             real = !isNaN(other) ? other : r,
             imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
-        console.log('real and imaginary in add', real, imaginary);
         return new Complex(this.real + real, this.imaginary + imaginary);
     }
 
@@ -69,14 +67,12 @@ const Complex = module.exports = class {
     }
 
     sub(other = 0, defaultImaginary) {
-        console.log('other sub ', other);
         const {
             i = 0,
             r = 0,
             real = !isNaN(other) ? other : r,
             imaginary = !isNaN(defaultImaginary) ? defaultImaginary : i
         } = other;
-        console.log('r and i in sib', real, imaginary, this);
         return new Complex(this.real - real, this.imaginary - imaginary);
     }
 
@@ -216,23 +212,17 @@ const Complex = module.exports = class {
     }
 
     sqrt(n = 2) {
-        console.log('this in sqrt', this);
         const { r = 0, i = 0, real = r, imaginary = i } = this;
         let { norm, theta } = Complex.getPolar(real, imaginary);
         theta = theta / n;
         if (!norm) return this;
 
-        const roots = new Array(n).fill(0);
-        console.log('roots ', roots.map((item, index) => new Complex(
-            norm * Math.cos(theta + Pi2 * index / n),
-            norm * Math.sin(theta + Pi2 * index / n)
-        )));
-        const res = roots.map((item, index) => new Complex(
-            norm * Math.cos(theta + Pi2 * index / n),
-            norm * Math.sin(theta + Pi2 * index / n)
-        ));
-        console.log('res ', res);
-        return res;
+        return new Array(n)
+            .fill(0)
+            .map((item, index) => new Complex(
+                norm * Math.cos(theta + Pi2 * index / n),
+                norm * Math.sin(theta + Pi2 * index / n)
+            ));
     }
 
     static sqrt(complex, n = 2) {
@@ -304,11 +294,52 @@ const Complex = module.exports = class {
 
     static acos(complex, other) {
         const _this = new Complex(complex, other);
-        console.log('_this ', _this);
         return _this
             .add(_this.pow(2).sub(1).sqrt()[0])
             .ln()
             .multiply(Complex.im(-1));
+    }
+
+    asin() {
+        return this
+            .multiply(Complex.im())
+            .add(Complex.re(1).sub(this.pow(2)).sqrt()[0])
+            .ln()
+            .multiply(Complex.im(-1));
+    }
+
+    static asin(complex, other) {
+        const _this = new Complex(complex, other);
+        return _this
+            .multiply(Complex.im())
+            .add(Complex.re(1).sub(_this.pow(2)).sqrt()[0])
+            .ln()
+            .multiply(Complex.im(-1));
+    }
+
+    atang() {
+        return Complex.re(1)
+            .sub(this.multiply(Complex.im()))
+            .ln()
+            .sub(Complex
+                .re(1)
+                .add(this.multiply(Complex.im()))
+                .ln()
+            )
+            .multiply(Complex.im(0.5));
+    }
+
+    static atang(complex, other) {
+        const _this = new Complex(complex, other);
+        return Complex.re(1)
+            .sub(_this.multiply(Complex.im()))
+            .ln()
+            .sub(Complex
+                .re(1)
+                .add(_this.multiply(Complex.im()))
+                .ln()
+            )
+            .multiply(Complex.im(0.5));
     }
 
     sin() {
@@ -320,6 +351,7 @@ const Complex = module.exports = class {
             )
             .div({ imaginary: 2 });
     }
+
 
     static sin(complex, other) {
         const _this = new Complex(complex, other);
