@@ -1,6 +1,6 @@
 {
   "name": "imagine-node",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "node module to work with complex numbers",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Cereceres/imagine-node.git"
   },
+  "files":["umd"],
   "keywords": [
     "imaginary",
     "numbers",
