@@ -231,11 +231,12 @@ const Complex = module.exports = class {
         theta = theta / n;
         if (!norm) return this;
 
-        const roots = new Array(n);
-        return roots.map((item, index) => new Complex(
-            norm * Math.cos(theta + Pi2 * index / n),
-            norm * Math.sin(theta + Pi2 * index / n)
-        ));
+        return new Array(n)
+            .fill(0)
+            .map((item, index) => new Complex(
+                norm * Math.cos(theta + Pi2 * index / n),
+                norm * Math.sin(theta + Pi2 * index / n)
+            ));
     }
 
     exp() {
