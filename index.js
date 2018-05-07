@@ -390,4 +390,13 @@ const Complex = module.exports = class {
     static conjugate(complex) {
         return new Complex(complex).conjugate();
     }
+
+    toString() {
+        if (!this.i) return String(this.r);
+        if (!this.r) return `${this.i > 0 ? '' : '-'}${Math.abs(this.i)}i`;
+        if (this.i === 1) return `${this.r} + i`;
+        if (this.i === -1) return `${this.r} - i`;
+
+        return `${this.r} ${this.i > 0 ? '+' : '-'} ${Math.abs(this.i)}i`;
+    }
 };

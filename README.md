@@ -11,7 +11,7 @@ npm install imagine-node
 
 ```js
 const complex = new Complex(1, 1);
-
+complex.toString() // 1+i
 const chainingComplex = complex
     .add({ real: 2, imaginary:3 })
     .sub({ real: 1, imaginary:1 })
@@ -99,6 +99,8 @@ sin() {
 ## inverse({real, imaginary}) ->imagineInstance
 ## im(number) -> imagineInstance
 return a complex number with only imaginary part equal to number given
+## toString(number) -> string
+
 ## re(number) -> imagineInstance
 return a complex number with only real part equal to number given
 
@@ -121,6 +123,8 @@ return a imaginary number
 ## inverse() ->imagineInstance
 ## im() -> imagineInstance
 return a complex number with only imaginary part
+## toString() -> string
+
 ## re() -> imagineInstance
 return a complex number with only real part
 
