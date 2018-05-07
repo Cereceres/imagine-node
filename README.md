@@ -91,7 +91,7 @@ sin() {
 ## cos({real, imaginary}) -> imagineInstance
 ## asin({real, imaginary}) -> imagineInstance
 ## acos({real, imaginary}) -> imagineInstance
-## atang() -> imagineInstance
+## atang({real, imaginary}) -> imagineInstance
 
 ## sin({real, imaginary}) -> imagineInstance
 ## pow({real, imaginary}, {real, imaginary}) -> imagineInstance
