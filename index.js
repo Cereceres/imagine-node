@@ -399,4 +399,14 @@ const Complex = module.exports = class {
 
         return `${this.r} ${this.i > 0 ? '+' : '-'} ${Math.abs(this.i)}i`;
     }
+
+    static toString(complex, imaginary) {
+        const _this = new Complex(complex, imaginary);
+        if (!_this.i) return String(_this.r);
+        if (!_this.r) return `${_this.i > 0 ? '' : '-'}${Math.abs(_this.i)}i`;
+        if (_this.i === 1) return `${_this.r} + i`;
+        if (_this.i === -1) return `${_this.r} - i`;
+
+        return `${_this.r} ${_this.i > 0 ? '+' : '-'} ${Math.abs(_this.i)}i`;
+    }
 };
