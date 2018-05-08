@@ -1,4 +1,6 @@
 # imagine-node
+
+[![Join the chat at https://gitter.im/imagine-node/Lobby](https://badges.gitter.im/imagine-node/Lobby.svg)](https://gitter.im/imagine-node/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 module to work with complex numbers
 
 # Install 
