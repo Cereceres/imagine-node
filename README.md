@@ -95,7 +95,8 @@ sin() {
 ## acos({real, imaginary}) -> imagineInstance
 ## atang({real, imaginary}) -> imagineInstance
 ## norm({real, imaginary}) -> number
-## getPolar({real, imaginary}) -> {norm, theta}
+## polar({real, imaginary}) -> {norm, theta}
+## theta({real, imaginary}) -> number
 
 
 ## sin({real, imaginary}) -> imagineInstance
@@ -120,7 +121,9 @@ return a imaginary number
 ## cos() -> imagineInstance
 ## sin() -> imagineInstance
 ## norm() -> number
-## getPolar() -> {norm, theta}
+## polar() -> {norm, theta}
+## theta() -> number
+
 ## asin() -> imagineInstance
 ## acos() -> imagineInstance
 ## atang() -> imagineInstance

@@ -53,21 +53,21 @@ const Complex = module.exports = class {
         } = other;
         return new Complex(_this.real + real, _this.imaginary + imaginary);
     }
-    static getTheta(real, imaginary) {
-        return new Complex(real, imaginary).getTheta();
+    static theta(real, imaginary) {
+        return new Complex(real, imaginary).theta();
     }
 
-    getTheta() {
+    theta() {
         const { real, imaginary } = this;
         return Math.atan2(imaginary, real);
     }
 
-    static getPolar(real, imaginary) {
-        return new Complex(real, imaginary).getPolar();
+    static polar(real, imaginary) {
+        return new Complex(real, imaginary).polar();
     }
 
-    getPolar() {
-        return { theta: this.getTheta(), norm: this.norm() };
+    polar() {
+        return { theta: this.theta(), norm: this.norm() };
     }
 
     sub(other = 0, defaultImaginary) {
@@ -217,7 +217,7 @@ const Complex = module.exports = class {
 
     sqrt(n = 2) {
         const { r = 0, i = 0, real = r, imaginary = i } = this;
-        let { norm, theta } = Complex.getPolar(real, imaginary);
+        let { norm, theta } = Complex.polar(real, imaginary);
         theta = theta / n;
         if (!norm) return this;
 
@@ -231,7 +231,7 @@ const Complex = module.exports = class {
 
     static sqrt(complex, n = 2) {
         const { r = 0, i = 0, real = r, imaginary = i } = complex;
-        let { norm, theta } = Complex.getPolar(real, imaginary);
+        let { norm, theta } = Complex.polar(real, imaginary);
         theta = theta / n;
         if (!norm) return this;
 
@@ -371,7 +371,7 @@ const Complex = module.exports = class {
 
     ln() {
         const { r = 0, i = 0, real = r, imaginary = i } = this;
-        const { norm, theta } = Complex.getPolar(real, imaginary);
+        const { norm, theta } = Complex.polar(real, imaginary);
         return new Complex(
             Math.log(norm),
             theta
@@ -380,7 +380,7 @@ const Complex = module.exports = class {
 
     static ln(complex) {
         const { r = 0, i = 0, real = r, imaginary = i } = complex;
-        const { norm, theta } = Complex.getPolar(real, imaginary);
+        const { norm, theta } = Complex.polar(real, imaginary);
         return new Complex(
             Math.log(norm),
             theta
