@@ -53,17 +53,21 @@ const Complex = module.exports = class {
         } = other;
         return new Complex(_this.real + real, _this.imaginary + imaginary);
     }
+    static getTheta(real, imaginary) {
+        return new Complex(real, imaginary).getTheta();
+    }
+
+    getTheta() {
+        const { real, imaginary } = this;
+        return Math.atan2(imaginary, real);
+    }
 
     static getPolar(real, imaginary) {
         return new Complex(real, imaginary).getPolar();
     }
 
     getPolar() {
-        const { real, imaginary } = this;
-        const norm = Math.hypot(real, imaginary);
-        const theta = Math.atan2(imaginary, real);
-
-        return { theta, norm };
+        return { theta: this.getTheta(), norm: this.norm() };
     }
 
     sub(other = 0, defaultImaginary) {

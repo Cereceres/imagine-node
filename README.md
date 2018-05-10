@@ -94,6 +94,9 @@ sin() {
 ## asin({real, imaginary}) -> imagineInstance
 ## acos({real, imaginary}) -> imagineInstance
 ## atang({real, imaginary}) -> imagineInstance
+## norm({real, imaginary}) -> number
+## getPolar({real, imaginary}) -> {norm, theta}
+
 
 ## sin({real, imaginary}) -> imagineInstance
 ## pow({real, imaginary}, {real, imaginary}) -> imagineInstance
@@ -101,7 +104,7 @@ sin() {
 ## inverse({real, imaginary}) ->imagineInstance
 ## im(number) -> imagineInstance
 return a complex number with only imaginary part equal to number given
-## toString(number) -> string
+## toString({real, imaginary}) -> string
 
 ## re(number) -> imagineInstance
 return a complex number with only real part equal to number given
@@ -116,7 +119,8 @@ return a imaginary number
 ## ln() -> imagineInstance
 ## cos() -> imagineInstance
 ## sin() -> imagineInstance
-
+## norm() -> number
+## getPolar() -> {norm, theta}
 ## asin() -> imagineInstance
 ## acos() -> imagineInstance
 ## atang() -> imagineInstance

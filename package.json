@@ -1,6 +1,6 @@
 {
   "name": "imagine-node",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "node module to work with complex numbers",
   "main": "index.js",
   "scripts": {
