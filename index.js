@@ -290,6 +290,44 @@ const Complex = module.exports = class {
             .div({ real:2 });
     }
 
+    cosh() {
+        return this
+            .exp()
+            .add(
+                this.multiply({ real:-1 }).exp()
+            )
+            .div({ real:2 });
+    }
+
+    static cosh(complex, other) {
+        const _this = new Complex(complex, other);
+        return _this
+            .exp()
+            .add(
+                _this.multiply({ real:-1 }).exp()
+            )
+            .div({ real:2 });
+    }
+
+    sinh() {
+        return this
+            .exp()
+            .sub(
+                this.multiply({ real:-1 }).exp()
+            )
+            .div({ real:2 });
+    }
+
+    static sinh(complex, other) {
+        const _this = new Complex(complex, other);
+        return _this
+            .exp()
+            .sub(
+                _this.multiply({ real:-1 }).exp()
+            )
+            .div({ real:2 });
+    }
+
     acos() {
         return this
             .add(this.pow(2).sub(1).sqrt()[0])
