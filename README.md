@@ -93,6 +93,8 @@ sin() {
 ## cos({real, imaginary}) -> imagineInstance
 ## asin({real, imaginary}) -> imagineInstance
 ## acos({real, imaginary}) -> imagineInstance
+## sinh({real, imaginary}) -> imagineInstance
+## cosh({real, imaginary}) -> imagineInstance
 ## atang({real, imaginary}) -> imagineInstance
 ## norm({real, imaginary}) -> number
 ## polar({real, imaginary}) -> {norm, theta}
@@ -120,6 +122,8 @@ return a imaginary number
 ## ln() -> imagineInstance
 ## cos() -> imagineInstance
 ## sin() -> imagineInstance
+## cosh() -> imagineInstance
+## sinh() -> imagineInstance
 ## norm() -> number
 ## polar() -> {norm, theta}
 ## theta() -> number
